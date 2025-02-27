@@ -1,6 +1,6 @@
 ### Abaixar Videos do Youtube com Python
 
-```markdown
+``markdown
 # YouTube Video and Audio Downloader
 
 ## Descrição do Projeto
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 
 ## Estrutura do Projeto
 
-```plaintext
+``plaintext
 .
 ├── app.py              # Arquivo principal da aplicação Flask
 ├── templates/
@@ -65,7 +65,6 @@ pip install -r requirements.txt
 │       └── animations.js # Animações JavaScript
 ├── downloads/          # Diretório onde os arquivos baixados são armazenados temporariamente
 └README.md           	# Este arquivo
-```
 
 ## Como Usar
 
