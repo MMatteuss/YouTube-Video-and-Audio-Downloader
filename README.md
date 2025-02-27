@@ -1,6 +1,5 @@
 ### Abaixar Videos do Youtube com Python
 
-``markdown
 # YouTube Video and Audio Downloader
 
 ## Descrição do Projeto
