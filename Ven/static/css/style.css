@@ -1,0 +1,154 @@
+/* Estilos para o corpo e layout */
+body {
+    background-color: #e3f2fd; /* Azul claro */
+    color: #0d47a1; /* Azul escuro */
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+}
+
+/* Container de alertas */
+.alert-container {
+    margin-top: 20px;
+}
+
+.alert {
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Áreas e formulários */
+.areaLink {
+    margin: 30px 0;
+}
+
+.input-group-append .btn {
+    background-color: #1976d2; /* Azul médio */
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.input-group-append .btn:hover {
+    background-color: #0d47a1; /* Azul escuro */
+}
+
+.input-group .form-control {
+    border-color: #1976d2;
+}
+
+.input-group .form-control:focus {
+    border-color: #0d47a1;
+    box-shadow: 0 0 5px rgba(13, 71, 161, 0.5);
+}
+
+/* Caixa de download */
+.caixa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+    padding: 20px;
+    border: 1px solid #2196f3; /* Azul vibrante */
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.caixa:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.esquerda, .direita {
+    flex: 1;
+}
+
+.esquerda iframe {
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Botões de download */
+.direita {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.direita form {
+    margin: 10px 0;
+}
+
+.direita .btn {
+    background-color: #ff5722; /* Laranja vibrante */
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.direita .btn:hover {
+    background-color: #e64a19; /* Laranja escuro */
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+    .caixa {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .direita {
+        align-items: flex-start;
+    }
+
+    .direita .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* Animação de fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Aplicando animação de fade in */
+.alert, .caixa {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Estilos para cabeçalho e texto */
+h1, h2, h3, h4, h5, h6 {
+    color: #0d47a1;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Cores adicionais */
+.bg-light-blue {
+    background-color: #e1f5fe;
+}
+
+.text-light-blue {
+    color: #0277bd;
+}
+
+.bg-dark-blue {
+    background-color: #01579b;
+}
+
+.text-dark-blue {
+    color: #004d40;
+}
