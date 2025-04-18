@@ -3,54 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Baixe vídeos e músicas do YouTube em formato MP4 e MP3 de forma rápida e gratuita">
     <link rel="stylesheet" href="../static/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>FastDownload - Baixe vídeos e músicas gratuitamente</title>
 </head>
 <body>
-    <div class="container mt-3">
-        <div class="alert-container">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}" role="alert">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+    <!-- Header com navegação -->
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="brand">
+                    <i class="fas fa-cloud-download-alt"></i>
+                    <span>FastDownload</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#como-funciona"><i class="fas fa-question-circle"></i> Como funciona</a></li>
+                    <li><a href="#recursos"><i class="fas fa-star"></i> Recursos</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <div class="areaLink">
-        <form method="post">
-            <div class="input-group mb-3">
-                <input type="url" name="linkYoutube" id="linkYoutube" class="form-control" placeholder="https://www.youtube.com/" aria-label="https://www.youtube.com/" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Button</button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Baixe vídeos e músicas <span>gratuitamente</span></h1>
+                <p class="hero-subtitle">Converta qualquer vídeo do YouTube para MP3 ou MP4 em poucos segundos</p>
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>Rápido e Fácil</span>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </section>
 
-    <div class="areaDownload">
-        {% if prontoDownload and not formato %}
-        <div class="caixa">
-            <div class="esquerda">
-                <iframe width="420" height="345" src="{{ linkVideo }}"></iframe>
-                <p>{{ nomeVideo }}</p>
+    <!-- Área principal de download -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Alertas -->
+            <div class="alert-container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}" role="alert">
+                                <i class="fas fa-{{ 'check-circle' if category == 'success' else 'exclamation-circle' }}"></i>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
             </div>
-            <div class="direita">
-                <form method="post">
-                    <input type="hidden" name="linkYoutube" value="{{ linkVideo }}">
-                    <button class="btn btn-outline-secondary" type="submit" name="formato" value="mp4">Vídeo (MP4)</button>
-                    <button class="btn btn-outline-secondary" type="submit" name="formato" value="mp3">Música (MP3)</button>
-                </form>
+
+            <!-- Card de conversão -->
+            <div class="converter-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-link"></i> Cole o link do YouTube</h2>
+                    <p>Insira abaixo o URL do vídeo que deseja converter</p>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="converter-form">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fab fa-youtube"></i></span>
+                            <input type="url" name="linkYoutube" id="linkYoutube" class="form-control" 
+                                   placeholder="https://www.youtube.com/watch?v=..." required
+                                   aria-label="URL do vídeo do YouTube">
+                            <button class="btn-convert" type="submit">
+                                <i class="fas fa-magic"></i> Converter
+                            </button>
+                        </div>
+                        <div class="form-tip">
+                            <i class="fas fa-lightbulb"></i> Dica: Copie o link da barra de endereços do YouTube
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Área de download (aparece após inserir link) -->
+            <div class="areaDownload">
+                {% if prontoDownload and not formato %}
+                <div class="download-card">
+                    <div class="preview-section">
+                        <div class="video-container">
+                            <iframe src="{{ linkVideo }}" frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen></iframe>
+                        </div>
+                        <h3 class="video-title">{{ nomeVideo }}</h3>
+                    </div>
+                    <div class="download-section">
+                        <h4><i class="fas fa-download"></i> Escolha o formato:</h4>
+                        <form method="post" class="download-options">
+                            <input type="hidden" name="linkYoutube" value="{{ linkVideo }}">
+                            <button class="btn-download mp4" type="submit" name="formato" value="mp4">
+                                <i class="fas fa-film"></i> Vídeo (MP4)
+                            </button>
+                            <button class="btn-download mp3" type="submit" name="formato" value="mp3">
+                                <i class="fas fa-music"></i> Áudio (MP3)
+                            </button>
+                        </form>
+                        <div class="download-info">
+                            <div class="info-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Qualidade máxima garantida</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>100% seguro e sem vírus</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
-        {% endif %}
-    </div>
+    </main>
+
+    <!-- Como funciona -->
+    <section id="como-funciona" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> Como funciona</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-copy step-icon"></i>
+                    <h3>Copie o link</h3>
+                    <p>Copie o URL do vídeo do YouTube que deseja baixar</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-paste step-icon"></i>
+                    <h3>Cole aqui</h3>
+                    <p>Insira o link no campo acima e clique em "Converter"</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-download step-icon"></i>
+                    <h3>Baixe</h3>
+                    <p>Escolha o formato desejado e seu download começará</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos -->
+    <section id="recursos" class="features">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-star"></i> Nossos recursos</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Super rápido</h3>
+                    <p>Conversão em segundos com nossa tecnologia avançada</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-lock"></i>
+                    <h3>Seguro</h3>
+                    <p>Não armazenamos seus vídeos ou dados pessoais</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-infinity"></i>
+                    <h3>Ilimitado</h3>
+                    <p>Baixe quantos vídeos quiser sem restrições</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Compatível</h3>
+                    <p>Funciona em todos os dispositivos e navegadores</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-question-circle"></i> Perguntas frequentes</h2>
+            <div class="faq-items">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>É gratuito usar este serviço?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim, nosso serviço é completamente gratuito! Você pode baixar quantos vídeos e músicas quiser sem pagar nada.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Qual a qualidade dos downloads?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oferecemos a melhor qualidade disponível para cada vídeo. Para MP4, até 1080p Full HD. Para MP3, até 320kbps de qualidade.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Posso baixar vídeos privados?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não, nosso serviço só funciona com vídeos públicos disponíveis no YouTube.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-cloud-download-alt"></i>
+                    <span>FastDownload</span>
+                    <p>O melhor conversor de YouTube para MP3 e MP4</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links úteis</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="#como-funciona"><i class="fas fa-question-circle"></i> Como funciona</a></li>
+                        <li><a href="#recursos"><i class="fas fa-star"></i> Recursos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-legal">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Termos de serviço</a></li>
+                        <li><a href="#"><i class="fas fa-lock"></i> Política de privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FastDownload. Todos os direitos reservados.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão de voltar ao topo -->
+    <button class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="../static/js/animations.js"></script>
+    <!-- <script src="../static/js/teste.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
