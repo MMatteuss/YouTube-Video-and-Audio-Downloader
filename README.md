@@ -1,18 +1,17 @@
-### Abaixar Videos do Youtube com Python
+### Baixar Vídeos do YouTube com Python
 
-```markdown
 # YouTube Video and Audio Downloader
 
 ## Descrição do Projeto
 
-Este projeto é uma aplicação web que permite aos usuários baixar vídeos e músicas do YouTube em formato MP4 e MP3, respectivamente. Usando Flask para construir o backend, a aplicação processa URLs do YouTube fornecidas pelos usuários, baixa o conteúdo usando a biblioteca `pytubefix` e permite que os usuários façam o download dos arquivos diretamente de seu navegador.
+Este projeto é uma aplicação web que permite aos usuários baixar vídeos e músicas do YouTube nos formatos MP4 e MP3, respectivamente. Usando Flask para o backend, a aplicação processa URLs do YouTube fornecidas pelos usuários, baixa o conteúdo usando a biblioteca `pytubefix` e permite que os usuários façam o download dos arquivos diretamente de seu navegador.
 
 ## Funcionalidades
 
-- **Baixar Vídeos**: Permite aos usuários baixar vídeos do YouTube em formato MP4.
-- **Baixar Músicas**: Permite aos usuários baixar músicas do YouTube em formato MP3.
-- **Interface Simples e Responsiva**: Utiliza Bootstrap para uma interface de usuário responsiva e amigável.
-- **Animações Suaves**: Adiciona animações suaves usando CSS e JavaScript para uma melhor experiência do usuário.
+- **Baixar Vídeos**: Permite baixar vídeos do YouTube em formato MP4.
+- **Baixar Músicas**: Permite baixar músicas do YouTube em formato MP3.
+- **Interface Simples e Responsiva**: Utiliza Bootstrap para uma experiência amigável.
+- **Animações Suaves**: CSS e JavaScript garantem uma navegação fluida.
 
 ## Pré-requisitos
 
@@ -26,19 +25,19 @@ Antes de começar, certifique-se de ter as seguintes dependências instaladas:
 
 ## Instalação
 
-1. Clone este repositório para o seu ambiente local:
+1. Clone este repositório:
 
 ```bash
 git clone https://github.com/seu-usuario/seu-repositorio.git
 ```
 
-2. Navegue até o diretório do projeto:
+2. Acesse o diretório do projeto:
 
 ```bash
 cd seu-repositorio
 ```
 
-3. Crie um ambiente virtual e ative-o:
+3. Crie e ative um ambiente virtual:
 
 ```bash
 python -m venv venv
@@ -53,18 +52,17 @@ pip install -r requirements.txt
 
 ## Estrutura do Projeto
 
-```plaintext
-.
-├── app.py              # Arquivo principal da aplicação Flask
-├── templates/
-│   └── index.html      # Página principal da aplicação
-├── static/
-│   ├── css/
-│   │   └── style.css   # Estilos customizados
-│   └── js/
-│       └── animations.js # Animações JavaScript
-├── downloads/          # Diretório onde os arquivos baixados são armazenados temporariamente
-└README.md           	# Este arquivo
+```
+├── app.py              # Arquivo principal da aplicação Flask  
+├── templates/          
+│   └── index.html      # Página principal  
+├── static/             
+│   ├── css/            
+│   │   └── style.css   # Estilos customizados  
+│   └── js/             
+│       └── animations.js # Animações JavaScript  
+├── downloads/          # Diretório temporário para arquivos baixados  
+└── README.md           # Este arquivo  
 ```
 
 ## Como Usar
@@ -88,33 +86,39 @@ python app.py
 1. Insira o link do vídeo do YouTube no campo designado.
 2. Clique em "Vídeo" para baixar em MP4 ou "Música" para baixar em MP3.
 3. Aguarde até que o download seja concluído.
-4. O arquivo será baixado para o diretório de downloads do seu navegador.
+4. O arquivo será salvo no diretório de downloads do seu navegador.
 
 ## Contribuição
 
-Sinta-se à vontade para contribuir com este projeto. Para começar:
+Quer contribuir? Siga estas etapas:
 
-1. Faça um fork deste repositório.
-2. Crie um branch para sua nova funcionalidade (`git checkout -b feature/nova-funcionalidade`).
-3. Commit suas alterações (`git commit -m 'Adiciona nova funcionalidade'`).
-4. Envie para o branch (`git push origin feature/nova-funcionalidade`).
+1. Faça um fork do repositório.
+2. Crie um branch para sua nova funcionalidade:
+   ```bash
+   git checkout -b feature/nova-funcionalidade
+   ```
+3. Commit suas alterações:
+   ```bash
+   git commit -m 'Adiciona nova funcionalidade'
+   ```
+4. Envie para o branch remoto:
+   ```bash
+   git push origin feature/nova-funcionalidade
+   ```
 5. Abra um Pull Request.
 
 ## Licença
 
-Este projeto é licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto é licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## Contato
 
-Para mais informações ou perguntas, sinta-se à vontade para entrar em contato:
+Para mais informações ou dúvidas, entre em contato:
 
 - **Nome**: Mateus Monteiro
-- **Email**: Mateusmonteito57@gmail.com
-- **GitHub**: https://github.com/MMatteuss
+- **Email**: mateusmonteito57@gmail.com
+- **GitHub**: [MMatteuss](https://github.com/MMatteuss)
 
 ---
 
 Feito com ❤️ por Mateus Monteiro
-```
-
-Espero que esse README atenda às suas necessidades. Se precisar de mais alguma coisa, estou aqui para ajudar! 😊
